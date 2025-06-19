@@ -12,9 +12,9 @@ import { User } from '../entities/user.entity';
     TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: 'your_jwt_secret', // Remplacez par une clé secrète sécurisée
+      secret: 'andreanicksylvanoilaina', // Remplacez par une clé secrète sécurisée
       signOptions: { expiresIn: '60m' },
-    }),
+    })
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
