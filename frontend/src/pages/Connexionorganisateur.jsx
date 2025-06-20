@@ -1,4 +1,4 @@
-function Connexionorganisateur() {
+export default function Connexionorganisateur() {
     return
     (
         <>
@@ -27,7 +27,5 @@ function Connexionorganisateur() {
                 </div>
             </div>
         </>
-    )
+    );
 }
-
-export default Connexionorganisateur
