@@ -5,9 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { GoogleStrategy } from './google.strategy';
 
 @Module({
-  imports: [
-    PassportModule.register({ defaultStrategy: 'google' }),
-  ],
+  imports: [PassportModule.register({ defaultStrategy: 'google' })],
   providers: [AuthService, GoogleStrategy],
   controllers: [AuthController],
 })
