@@ -7,8 +7,7 @@ export default function Inscription() {
           <form className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">Nom</label>
-              <input
-                type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500"/>
+              <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500"/>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">Email</label>
