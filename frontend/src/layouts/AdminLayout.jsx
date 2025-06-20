@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function <Admin></Admin>Layout(){
+export default function AdminLayout(){
     return (
         <>
         <div><Admin></Admin>Layout</div>
