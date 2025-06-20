@@ -8,8 +8,9 @@ import GuestLayout from "../layouts/GuestLayout";
 import Notfound from "../pages/Notofoundpage";
 import AdminLayout from "../layouts/AdminLayout";
 import Pagepublic from "../pages/Pagepublic";
+import Connexionorganisateur from "../pages/Connexionorganisateur";
+import Inscription from "../pages/Inscription";
 // import Test from "../layouts/test";
-// import Connexionorganisateur from "../pages/Connexionorganisateur";
 const router=createBrowserRouter([
     //  {
     //     path:"/",
@@ -77,15 +78,15 @@ const router=createBrowserRouter([
             {
                 path:"/pagepublic",
                 element:<Pagepublic/>
+            },
+            {
+                path:"/connexion",
+                element:<Connexionorganisateur/>
+            },
+            {
+                path:"/inscription",
+                element:<Inscription/>
             }
-            // {
-            //     path:"/connexion",
-            //     element:<Connexionorganisateur/>
-            // },
-            // {
-            //     path:"/inscription",
-            //     element:<Inscription/>
-            // }
         ]
     },
     {
