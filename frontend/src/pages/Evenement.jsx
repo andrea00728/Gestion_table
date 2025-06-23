@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export default function Evenement() {
 
     return (
-        <div className="min-h-screen pb-8">
+        <div className="min-h-screen pb-8 mt-16">
             <main className="container mx-auto px-4">
                 {/********************* ****** Section: Organise l'événement ******************************/}
                 <section className="bg-white pb-6 mt-4 mx-auto max-w-5xl rounded-lg">
@@ -22,7 +22,7 @@ export default function Evenement() {
                                 type="text"
                                 id="event-nom"
                                 name="nom"
-                                className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border bg-gray-100 focus:bg-gray-100 border-gray-100 rounded-md focus:ring-gray-500 focus:border-gray-500"
                             />
                         </div>
                         <div>
@@ -31,7 +31,7 @@ export default function Evenement() {
                                 type="text"
                                 id="event-lieu"
                                 name="lieu"
-                                className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border bg-gray-100 focus:bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                         <div>
@@ -40,7 +40,7 @@ export default function Evenement() {
                                 type="text"
                                 id="event-type"
                                 name="type"
-                                className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border bg-gray-100 focus:bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                         <div>
@@ -49,7 +49,7 @@ export default function Evenement() {
                                 type="text"
                                 id="event-theme"
                                 name="theme"
-                                className="w-full p-2 border border-gray-300 bg-[#D9D9D9] focus:bg-[#D9D9D9] rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border border-gray-100 bg-gray-100 focus:bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                         <div>
@@ -58,7 +58,7 @@ export default function Evenement() {
                                 type="date"
                                 id="event-date"
                                 name="date"
-                                className="w-full p-2 border border-gray-300 bg-[#D9D9D9] focus:bg-[#D9D9D9] rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border border-gray-100 bg-gray-100 focus:bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                         <div>
@@ -67,7 +67,7 @@ export default function Evenement() {
                                 type="text"
                                 id="event-statut"
                                 name="statut"
-                                className="w-full p-2 border border-gray-300 rounded-md bg-[#D9D9D9] focus:bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full p-2 border border-gray-100 rounded-md bg-gray-100 focus:bg-gray-100 focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                     </div>
@@ -83,32 +83,32 @@ export default function Evenement() {
                     <h2 className="text-2xl font-normal p-6 text-gray-800 mb-6 text-center bg-gray-100">SALLE DISPONIBLE</h2>
                     <div className="grid grid-cols-3 gap-4 p-6">
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 1
                         </button>
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 2
                         </button>
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 3
                         </button>
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 4
                         </button>
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 5
                         </button>
                         <button
-                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                            className="bg-gray-100 focus:bg-gray-100 text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
                         >
                             espace 6
                         </button>
@@ -142,17 +142,17 @@ export default function Evenement() {
                                     type="text"
                                     name="nom"
                                     placeholder="nom"
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full p-2 border bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                                 <input
                                     type="text"
                                     name="prenom"
                                     placeholder="prenom"
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full p-2 border bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                                 <select
                                     name="sex"
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full p-2 border bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 >
                                     <option value="Homme">Homme</option>
                                     <option value="Femme">Femme</option>
@@ -161,7 +161,7 @@ export default function Evenement() {
                                     type="email"
                                     name="email"
                                     placeholder="email"
-                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full p-2 border bg-gray-100 border-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
 
