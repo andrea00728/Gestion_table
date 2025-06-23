@@ -16,7 +16,7 @@ export default function GuestLayout() {
 
   return (
     <>
-      <header className="w-full mx-auto bg-white shadow-md">
+      <header className="w-full mx-auto bg-white shadow-md fixed">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="w-12 h-12 bg-white flex items-center justify-center rounded-md shadow-sm">
             <h1 className="text-lg font-bold text-[#336666]">Logo</h1>
