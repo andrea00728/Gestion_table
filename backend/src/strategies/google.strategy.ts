@@ -3,34 +3,42 @@
 import { Strategy, Profile } from 'passport-google-oauth20';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy) {
-  constructor(private authService: AuthService) {
+export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly configService: ConfigService,
+  ) {
+    // 👇 Utilise une configuration compatible avec StrategyOptions (sans requête)
     super({
-      clientID: '493614615570-p2nq8odouskbim6kqppesns3pc0jjhh8.apps.googleusercontent.com',
-      clientSecret: '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',
-      callbackURL: 'http://localhost:3000/auth/google/callback',
+      clientID: configService.get<string>('GOOGLE_CLIENT_ID')!,
+      clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET')!,
+      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL') || 'http://localhost:3000/auth/google/callback',
       scope: ['email', 'profile'],
     });
   }
 
-  async validate(accessToken: string, refreshToken: string, profile: Profile) {
+  async validate(
+    accessToken: string,
+    refreshToken: string,
+    profile: Profile,
+  ) {
     const { id, displayName, emails, photos } = profile;
-    const email = emails && emails.length > 0 ? emails[0].value : null;
-    if (!email) {
-      throw new Error('Aucun email n\'a été retourné par Google');
-    }
+    const email = emails?.[0]?.value;
+    if (!email) throw new Error('Aucun email retourné par Google');
 
     const user = {
       googleId: id,
-      name: displayName || 'Unknown',
-      email: email,
+      name: displayName ?? 'Unknown',
+      email,
       role: 'organisateur' as const,
-      photoUrl: photos && photos.length > 0 ? photos[0].value : null,
-      accessToken: accessToken,
+      photoUrl: photos?.[0]?.value ?? null,
+      accessToken,
     };
+
     return this.authService.validateOrRegisterUser(user);
   }
 }
