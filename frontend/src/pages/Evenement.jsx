@@ -1,47 +1,6 @@
 import React, { useState } from 'react';
 
 export default function Evenement() {
-    // État pour la section "Organiser l'événement" (exemple)
-    const [eventDetails, setEventDetails] = useState({
-        nom: '',
-        lieu: '',
-        type: '',
-        theme: '',
-        date: '',
-        statut: '',
-    });
-
-    const handleEventChange = (e) => {
-        const { name, value } = e.target;
-        setEventDetails(prev => ({ ...prev, [name]: value }));
-    };
-
-    // Liste des espaces disponibles
-    const rooms = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    // État et fonctions pour la section "Invités"
-    const [guests, setGuests] = useState([]);
-    const [newGuest, setNewGuest] = useState({ nom: '', prenom: '', sex: 'Homme', email: '' });
-
-    const handleGuestChange = (e) => {
-        const { name, value } = e.target;
-        setNewGuest(prev => ({ ...prev, [name]: value }));
-    };
-
-    const handleAddGuest = () => {
-        if (newGuest.nom && newGuest.prenom && newGuest.email) {
-            setGuests(prev => [...prev, newGuest]);
-            setNewGuest({ nom: '', prenom: '', sex: 'Homme', email: '' }); // Réinitialiser le formulaire
-        } else {
-            alert("Veuillez remplir tous les champs (Nom, Prénom, Email) pour ajouter un invité.");
-        }
-    };
-
-    const handleImportGuests = () => {
-        // Logique pour importer des invités (ex: depuis un fichier CSV)
-        alert("Fonctionnalité d'importation non implémentée dans cet exemple.");
-        // Vous pouvez implémenter ici la lecture d'un fichier et la mise à jour de l'état des invités.
-    };
 
     return (
         <div className="min-h-screen pb-8">
@@ -63,8 +22,6 @@ export default function Evenement() {
                                 type="text"
                                 id="event-nom"
                                 name="nom"
-                                value={eventDetails.nom}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -74,8 +31,6 @@ export default function Evenement() {
                                 type="text"
                                 id="event-lieu"
                                 name="lieu"
-                                value={eventDetails.lieu}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -85,8 +40,6 @@ export default function Evenement() {
                                 type="text"
                                 id="event-type"
                                 name="type"
-                                value={eventDetails.type}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border bg-[#D9D9D9] focus:bg-[#D9D9D9] border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -96,8 +49,6 @@ export default function Evenement() {
                                 type="text"
                                 id="event-theme"
                                 name="theme"
-                                value={eventDetails.theme}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border border-gray-300 bg-[#D9D9D9] focus:bg-[#D9D9D9] rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -107,8 +58,6 @@ export default function Evenement() {
                                 type="date"
                                 id="event-date"
                                 name="date"
-                                value={eventDetails.date}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border border-gray-300 bg-[#D9D9D9] focus:bg-[#D9D9D9] rounded-md focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -118,8 +67,6 @@ export default function Evenement() {
                                 type="text"
                                 id="event-statut"
                                 name="statut"
-                                value={eventDetails.statut}
-                                onChange={handleEventChange}
                                 className="w-full p-2 border border-gray-300 rounded-md bg-[#D9D9D9] focus:bg-[#D9D9D9] focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
@@ -135,14 +82,36 @@ export default function Evenement() {
                 <section className="bg-white pb-6 mt-4 mx-auto max-w-5xl rounded-lg ">
                     <h2 className="text-2xl font-normal p-6 text-gray-800 mb-6 text-center bg-gray-100">SALLE DISPONIBLE</h2>
                     <div className="grid grid-cols-3 gap-4 p-6">
-                        {rooms.map((room) => (
-                            <button
-                                key={room}
-                                className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
-                            >
-                                espace {room}
-                            </button>
-                        ))}
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 1
+                        </button>
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 2
+                        </button>
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 3
+                        </button>
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 4
+                        </button>
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 5
+                        </button>
+                        <button
+                            className="bg-[#D9D9D9] focus:bg-[#D9D9D9] text-gray-700 px-4 py-3 rounded-md hover:bg-gray-300 text-lg font-medium"
+                        >
+                            espace 6
+                        </button>
                     </div>
                     <div className="flex justify-center mt-6">
                         <button className="bg-gray-200 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-300">
@@ -158,13 +127,11 @@ export default function Evenement() {
                         <div className="w-full md:w-1/3 pr-0 md:pr-6 mb-6 md:mb-0">
                             <div className="flex space-x-2 my-4">
                                 <button
-                                    onClick={handleAddGuest}
                                     className="bg-[#333445] text-white px-4 py-2 rounded-md hover:bg-gray-600 flex-1 transition"
                                 >
                                     ajouter
                                 </button>
                                 <button
-                                    onClick={handleImportGuests}
                                     className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-500 flex-1 transition"
                                 >
                                     importer
@@ -175,22 +142,16 @@ export default function Evenement() {
                                     type="text"
                                     name="nom"
                                     placeholder="nom"
-                                    value={newGuest.nom}
-                                    onChange={handleGuestChange}
                                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                                 <input
                                     type="text"
                                     name="prenom"
                                     placeholder="prenom"
-                                    value={newGuest.prenom}
-                                    onChange={handleGuestChange}
                                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                                 <select
                                     name="sex"
-                                    value={newGuest.sex}
-                                    onChange={handleGuestChange}
                                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 >
                                     <option value="Homme">Homme</option>
@@ -200,8 +161,6 @@ export default function Evenement() {
                                     type="email"
                                     name="email"
                                     placeholder="email"
-                                    value={newGuest.email}
-                                    onChange={handleGuestChange}
                                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
@@ -215,30 +174,24 @@ export default function Evenement() {
 
                         <div className="w-full md:w-5/6 md:pl-6">
                             <div className="p-4 rounded-md h-96 overflow-auto">
-                                {guests.length === 0 ? (
-                                    <p className="text-gray-500 text-center mt-10">Aucun invité ajouté pour le moment.</p>
-                                ) : (
-                                    <table className="min-w-full">
-                                        <thead className="bg-gray-100">
-                                            <tr className="mb-4">
-                                                <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">nom</th>
-                                                <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">prénom</th>
-                                                <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500 tracking-wider">sexe</th>
-                                                <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">email</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="bg-gray-100 divide-y divide-gray-200 text-center mt-6">
-                                            {guests.map((guest, index) => (
-                                                <tr key={index}>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{guest.nom}</td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{guest.prenom}</td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{guest.sex}</td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{guest.email}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                )}
+                                <table className="min-w-full">
+                                    <thead className="bg-gray-100">
+                                        <tr className="mb-4">
+                                            <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">nom</th>
+                                            <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">prénom</th>
+                                            <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500 tracking-wider">sexe</th>
+                                            <th scope="col" className="px-6 py-3 text-center  font-normal text-gray-500  tracking-wider">email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-gray-100 divide-y divide-gray-200 text-center mt-6">
+                                        <tr>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Elias</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sylvano</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Homme</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">eliasvano78@gmail.co</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
