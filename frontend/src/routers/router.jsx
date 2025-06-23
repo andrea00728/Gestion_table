@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate, Router } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout";
 import GuestLayout from "../layouts/GuestLayout";
 import Accueil from "../pages/Accueil";
-// import Evenement from "../pages/Evenement";
+import Evenement from "../pages/Evenement";
 // import Apropos from "../pages/Apropos";
 import Notfound from "../pages/Notofoundpage";
 import AdminLayout from "../layouts/AdminLayout";
@@ -47,10 +47,10 @@ const router=createBrowserRouter([
                 path:"/accueil",
                 element:<Accueil/>
             },
-            // {
-            //     path:"/evenement",
-            //     element:<Evenement/>
-            // },
+            {
+                path:"/evenement",
+                element:<Evenement/>
+            },
             // {
             //     path:"/apropos",
             //     element:<Apropos/>
