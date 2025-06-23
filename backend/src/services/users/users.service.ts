@@ -8,25 +8,18 @@ import { User } from '../../entities/user.entity';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private userRepository: Repository<User>,
   ) {}
 
-  async findByEmail(email: string): Promise<User | undefined> {
-    const user = await this.usersRepository.findOne({ where: { email } });
-    return user ?? undefined;
+  async findByEmail(email: string): Promise<User | null> { // Changé de User | undefined à User | null
+    return this.userRepository.findOneBy({ email });
   }
 
-  async createOrUpdate(userData: Partial<User>): Promise<User> {
-    const existingUser = userData.email ? await this.findByEmail(userData.email) : undefined;
+  async createOrUpdate(user: Partial<User>): Promise<User> {
+    const existingUser = await this.userRepository.findOneBy({ email: user.email });
     if (existingUser) {
-      await this.usersRepository.update(existingUser.id, userData);
-      const updatedUser = await this.usersRepository.findOne({ where: { id: existingUser.id } });
-      if (!updatedUser) {
-        throw new Error('User not found after update');
-      }
-      return updatedUser;
+      return this.userRepository.save({ ...existingUser, ...user });
     }
-    const user = this.usersRepository.create(userData);
-    return this.usersRepository.save(user);
+    return this.userRepository.save(user);
   }
 }

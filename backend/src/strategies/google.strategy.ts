@@ -1,36 +1,36 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable prettier/prettier */
-import { Injectable } from '@nestjs/common';
+import { Strategy, Profile } from 'passport-google-oauth20';
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, StrategyOptions, VerifyCallback } from 'passport-google-oauth20';
-import { ConfigService } from '@nestjs/config';
-import { UsersService } from '../services/users/users.service';
+import { Injectable } from '@nestjs/common';
+import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
-  constructor(
-    private configService: ConfigService,
-    private usersService: UsersService,
-  ) {
+export class GoogleStrategy extends PassportStrategy(Strategy) {
+  constructor(private authService: AuthService) {
     super({
-      clientID: configService.get<string>('GOOGLE_CLIENT_ID')!,
-      clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET')!,
-      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL')!,
+      clientID: '493614615570-p2nq8odouskbim6kqppesns3pc0jjhh8.apps.googleusercontent.com',
+      clientSecret: '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',
+      callbackURL: 'http://localhost:3000/auth/google/callback',
       scope: ['email', 'profile'],
-    } as StrategyOptions);
-    
+    });
   }
 
-  async validate(accessToken: string, refreshToken: string, profile: any, done: VerifyCallback): Promise<any> {
-    const { id, name, emails } = profile;
-    const userData = {
-      email: emails[0].value,
-      nom: `${name.givenName} ${name.familyName}`.trim(),
-      role: 'organisateur' as 'admin' | 'organisateur', // Rôle par défaut
+  async validate(accessToken: string, refreshToken: string, profile: Profile) {
+    const { id, displayName, emails, photos } = profile;
+    const email = emails && emails.length > 0 ? emails[0].value : null;
+    if (!email) {
+      throw new Error('Aucun email n\'a été retourné par Google');
+    }
+
+    const user = {
+      googleId: id,
+      name: displayName || 'Unknown',
+      email: email,
+      role: 'organisateur' as const,
+      photoUrl: photos && photos.length > 0 ? photos[0].value : null,
+      accessToken: accessToken,
     };
-    const user = await this.usersService.createOrUpdate(userData);
-    done(null, { ...user, accessToken });
+    return this.authService.validateOrRegisterUser(user);
   }
 }

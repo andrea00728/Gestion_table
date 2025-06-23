@@ -2,8 +2,7 @@
 export interface GoogleUser {
     googleId: string;
     email: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     picture: string;
     accessToken: string;
   }

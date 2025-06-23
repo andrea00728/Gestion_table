@@ -1,25 +1,26 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('users')
+@Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: true })
-  nom: string;
+  @Column()
+  googleId: string;
 
-  @Column({ unique: true })
+  @Column()
+  name: string;
+
+  @Column()
   email: string;
 
-  @Column({ nullable: true })
-  mot_de_passe: string;
-
-  @Column({ type: 'enum', enum: ['admin', 'organisateur'], default: 'organisateur' })
+  @Column({ default: 'organisateur' })
   role: 'admin' | 'organisateur';
-  googleId: string;
-  lastName: string;
-  firstName: string;
-  picture: string;
-  accessToken: string;
+
+  @Column({ type: 'text', nullable: true })
+  photoUrl: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  accessToken: string | null;
 }
