@@ -30,7 +30,6 @@ export default function Pagepublic() {
             </button>
           </div>
         </div>
-
         {/* Image à droite */}
         <div className="mt-10 lg:mt-0 lg:ml-10 w-full max-w-[500px]">
           <img src={Image} alt="Réunion" className="w-full h-auto object-contain" />
