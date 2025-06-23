@@ -24,7 +24,6 @@ export default function Pagepublic(){
             </button>
             </div>
         </div>
-
         {/* Image à droite */}
         <div className="mt-10 lg:mt-0 lg:ml-10">
             <img src={Image} alt="Réunion" className="w-[500px] h-[600px] max-w-full" />
