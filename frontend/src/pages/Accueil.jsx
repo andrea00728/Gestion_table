@@ -22,7 +22,6 @@ export default function Accueil() {
         </div>
       </section>
 
-
       <section className="bg-gray-50 py-16 px-8 text-center">
         <h2 className="text-2xl font-semibold mb-12 text-gray-800">NOS SERVICES</h2>
         <div className="flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-20">
@@ -61,8 +60,8 @@ export default function Accueil() {
                hover:bg-[#FB9E3A] active:bg-black active:bg-opacity-30 transition duration-200">
               Voir +
             </button>
-            
           </div>
+
           <div className="relative group">
             <img src="/src/assets/music-7238254_1280.jpg" className="w-full h-64 object-cover rounded-md" />
              <button
@@ -72,6 +71,7 @@ export default function Accueil() {
               Voir +
             </button>
           </div>
+ 
           <div className="relative group">
             <img src="/src/assets/little-girl-6746693_1280.jpg" className="w-full h-64 object-cover rounded-md" />
             <button
