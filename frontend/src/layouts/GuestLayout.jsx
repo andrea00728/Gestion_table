@@ -28,7 +28,7 @@ export default function GuestLayout(){
             {navItems.map((item) => (
                 <Link key={item.path} to={item.path}>
                 <button className="flex items-center justify-center gap-2 text-[#ffffff] bg-[#333446] font-bold text-[12px] w-[130px] text-center h-[40px] rounded-full">
-                    <span className="sm:inline">{item.label || 'Inscription'}</span>
+                    <span className="sm:inline">{item.name}</span>
                 </button>
                 </Link>
             ))}

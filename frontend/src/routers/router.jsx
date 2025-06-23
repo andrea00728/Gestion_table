@@ -12,11 +12,33 @@ import Connexionorganisateur from "../pages/Connexionorganisateur";
 import Inscription from "../pages/Inscription";
 import Test from "../layouts/test";
 const router=createBrowserRouter([
-     {
-        path:"/",
-        element:<Test/>,
-        children:[
+    //  {
+    //     path:"/",
+    //     element:<Test/>,
+    //     children:[
            
+    //         {
+    //             path:"/",
+    //             element:<Navigate to="/accueil"/>
+    //         },
+    //         {
+    //             path:"/accueil",
+    //             element:<Accueil/>
+    //         },
+    //         // {
+    //         //     path:"/evenement",
+    //         //     element:<Evenement/>
+    //         // },
+    //         // {
+    //         //     path:"/apropos",
+    //         //     element:<Apropos/>
+    //         // }
+    //     ]
+    // },
+    {
+        path:"/",
+        element:<DefaultLayout/>,
+        children:[
             {
                 path:"/",
                 element:<Navigate to="/accueil"/>
@@ -35,27 +57,6 @@ const router=createBrowserRouter([
             // }
         ]
     },
-    // {
-    //     path:"/",
-    //     element:<DefaultLayout/>,
-    //     children:[
-    //         // {
-    //         //     path:"/",
-    //         //     element:<Navigate to="/accueil"/>
-    //         // },{
-    //         //     path:"/accueil",
-    //         //     element:<Accueil/>
-    //         // },
-    //         // {
-    //         //     path:"/evenement",
-    //         //     element:<Evenement/>
-    //         // },
-    //         // {
-    //         //     path:"/apropos",
-    //         //     element:<Apropos/>
-    //         // }
-    //     ]
-    // },
     //  {
     //     path:"/",
     //     element:<AdminLayout/>,
@@ -69,28 +70,28 @@ const router=createBrowserRouter([
     //         // },
     //     ]
     // },
-    // {
-    //     path:"/",
-    //     element:<GuestLayout/>,
-    //     children:[
-    //         {
-    //             path:"/",
-    //             element:<Navigate to="/pagepublic"/>
-    //         },
-    //         {
-    //             path:"/pagepublic",
-    //             element:<Pagepublic/>
-    //         },
-    //         {
-    //             path:"/connexion",
-    //             element:<Connexionorganisateur/>
-    //         },
-    //         {
-    //             path:"/inscription",
-    //             element:<Inscription/>
-    //         }
-    //     ]
-    // },
+    {
+        path:"/",
+        element:<GuestLayout/>,
+        children:[
+            {
+                path:"/",
+                element:<Navigate to="/pagepublic"/>
+            },
+            {
+                path:"/pagepublic",
+                element:<Pagepublic/>
+            },
+            {
+                path:"/connexion",
+                element:<Connexionorganisateur/>
+            },
+            {
+                path:"/inscription",
+                element:<Inscription/>
+            }
+        ]
+    },
     {
         path:"*",
         element:<Notfound/>
