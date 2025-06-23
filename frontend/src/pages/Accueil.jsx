@@ -83,33 +83,6 @@ export default function Accueil() {
           </div>
         </div>
       </section>
-
-      {/* <section className="py-16 px-8 bg-white">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Nos événements passés</h2>
-        <p className="text-center text-gray-600 text-sm mb-12 max-w-3xl mx-auto">Pour consulter les événements déjà passés, cliquez sur le bouton "Voir +". L'historique des événements précédents est publié et accessible à tout moment.</p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="relative w-full h-64">
-            <img src="/src/assets/couple-443600_1280.jpg" className="w-full h-full object-cover rounded-md" />
-            <button
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-               bg-black bg-opacity-50 text-white px-6 py-3 rounded-full 
-               hover:bg-opacity-70 active:bg-black active:bg-opacity-30 transition duration-200">
-              Voir +
-            </button>
-          </div>
-
-          <div className="relative w-full h-64">
-            <img src="/src/assets/music-7238254_1280.jpg" className="w-full h-full object-cover rounded-md" />
-            <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-white font-semibold text-lg border border-white px-6 py-2 rounded  bg-opacity-0 hover:bg-black-500 hover:bg-opacity-80 transition"> Voir + </button>
-          </div>
-
-          <div className="relative w-full h-64">
-            <img src="/src/assets/little-girl-6746693_1280.jpg" className="w-full h-full object-cover rounded-md" />
-            <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-white font-semibold text-lg border border-white px-6 py-2 rounded  bg-opacity-0 hover:bg-black-500 hover:bg-opacity-80 transition"> Voir + </button>
-          </div>
-        </div>
-      </section> */}
-
-    </>
+</>
   );
 }
