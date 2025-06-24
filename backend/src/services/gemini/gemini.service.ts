@@ -8,15 +8,37 @@ export class GeminiService {
   private readonly API_KEY = process.env.GEMINI_API_KEY;
 
   constructor(private readonly httpService: HttpService) {
-    console.log('✅ HttpService injecté. Clé API :', this.API_KEY);
+    console.log('✅ Clé API Gemini chargée :', this.API_KEY);
   }
 
   async generate(prompt: string): Promise<string> {
+    // Prompt système qui limite le domaine de réponse
+    const systemPrompt = `
+Tu es une intelligence artificielle experte de la plateforme "MasterTable", une application web de gestion d’événements avec plans de table interactifs.
+
+Tu peux répondre uniquement à des questions en lien avec :
+- La création et la gestion d’événements
+- Le placement d’invités sur des plans de tables
+- La restauration associée à un événement
+- Les QR codes, la galerie photo, les modules sociaux (chat, mini-jeux)
+- Le tableau de bord de l’organisateur
+- Les abonnements, les statistiques et les technologies utilisées dans MasterTable
+
+Si la question sort de ce cadre, tu dois répondre :
+"Je suis désolé, je ne peux répondre qu’aux questions liées à la plateforme MasterTable."
+
+Toujours répondre en français, de façon claire et concise.
+`;
+
     const body = {
       contents: [
         {
           role: 'user',
-          parts: [{ text: prompt }],
+          parts: [
+            {
+              text: `${systemPrompt}\n\nQuestion de l'utilisateur : ${prompt}`,
+            },
+          ],
         },
       ],
     };
@@ -26,7 +48,9 @@ export class GeminiService {
         this.httpService.post(
           `${this.GEMINI_URL}?key=${this.API_KEY}`,
           body,
-          { headers: { 'Content-Type': 'application/json' } },
+          {
+            headers: { 'Content-Type': 'application/json' },
+          },
         ),
       );
 
