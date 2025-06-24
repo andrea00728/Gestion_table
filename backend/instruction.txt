@@ -1,0 +1,10 @@
+npm install -g @nestjs/cli
+
+npm install axios
+npm install --save @nestjs/axios
+
+
+npm install axios @nestjs/axios
+npm install dotenv
+
+
