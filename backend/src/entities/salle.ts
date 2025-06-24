@@ -1,18 +1,15 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn,  } from "typeorm";
-import { Lieu } from "./Lieu";
-import { Table_evenement } from "./Table";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Localisation } from './Location';
 
-@Entity('salle')
-export class Salle{
-    @PrimaryGeneratedColumn()
-    id:number;
 
-    @Column({unique:true})
-    nom:string;
+@Entity()
+export class Salle {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ManyToOne(()=>Lieu,lieu=>lieu.salles,{onDelete:'CASCADE'})
-   lieu:Lieu;
+  @Column()
+  nom: string;
 
-   @ManyToMany(()=>Table_evenement,table_even=>table_even.salle)
-   tables_even:Table_evenement;
+  @ManyToOne(() => Localisation, (localisation) => localisation.salles)
+  location: Localisation;
 }

@@ -1,18 +1,25 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Salle } from "./salle";
+// src/table/entities/table.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Invite } from './Invite';
+import { Evenement } from './Evenement';
 
-@Entity('table')
-export class Table_evenement{
+@Entity()
+export class TableEvent {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id:number;
-    @Column({unique:true})
-    nom:string;
-    @Column()
-    nombre_place:number;
-    @Column({default:0})
-    place_reserve:number;
+  @Column()
+  numero: number;
 
-    @ManyToOne(()=>Salle,salle=>salle.tables_even,{onDelete:'CASCADE'})
-    salle:Salle;
+  @Column()
+  capacite: number; // Ex: 5
+
+  @Column({ default: 0 })
+  placeReserve: number;
+
+  @ManyToOne(() => Evenement, (evenement) => evenement.tables)
+  event: Evenement;
+
+  @OneToMany(() => Invite, (invite) => invite.table)
+  guests: Invite[];
 }

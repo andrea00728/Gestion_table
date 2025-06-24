@@ -1,21 +1,27 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CreateEvenementDTO } from 'src/dto/CreateEvenementDTO';
+// src/event/event.controller.ts
+import { Controller, Post, Body, Get, Param, BadRequestException } from '@nestjs/common';
+import { CreateEventDto } from 'src/dto/CreateEvenementDTO';
 import { EvenementService } from 'src/services/evenement/evenement.service';
 
-@Controller('evenement')
+@Controller('evenements')
 export class EvenementController {
-    constructor(
-        private readonly evenementService:EvenementService
-    ){}
+  constructor(private readonly evenementService: EvenementService) {}
 
-    @Post('/create')
-    create(@Body() dto:CreateEvenementDTO){
-        return this.evenementService.create(dto);
+  @Post()
+  async create(@Body() dto: CreateEventDto) {
+    if (!dto.nom || !dto.type || !dto.theme || !dto.date || !dto.locationId || !dto.salleId) {
+      throw new BadRequestException('Tous les champs sont requis');
     }
+    return this.evenementService.create(dto);
+  }
 
-    @Get('/affichage information')
-    findAll()
-    {
-        return this.evenementService.findAll();
-    }
+  @Get()
+  findAll() {
+    return this.evenementService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.evenementService.findOne(+id);
+  }
 }

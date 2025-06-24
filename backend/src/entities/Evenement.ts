@@ -1,27 +1,37 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Lieu } from "./Lieu";
-import { User } from "./user.entity";
+// src/event/entities/event.entity.ts
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Localisation } from './Location';
+import { Salle } from './salle';
+import { TableEvent } from './Table';
+import { Invite } from './Invite';
 
-@Entity('evenement')
+
+@Entity()
 export class Evenement {
-    @PrimaryGeneratedColumn()
-    id:number;
-    @Column({type:"varchar",length:255})
-    user_id:string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    // @ManyToOne(()=>User,user.id,{nullable:false})
-    // @JoinColumn({name:"i=utilisateur_id"})
-    // user:User;
-    @Column()
-    nom:string;
-    @Column()
-    theme:String;
-    @Column()
-    type:string;
-    @Column({type:'date'})
-    date:Date;
-    @OneToMany(()=>Lieu,lieu=>lieu.evenement)
-    lieux:Lieu[];
-    @Column({type:'timestamp',default:()=>"CURRENT_TIMESTAMP"})
-    date_creation:Date;
+  @Column()
+  nom: string;
+
+  @Column({ enum: ['mariage', 'reunion', 'anniversaire', 'engagement', 'autre'] })
+  type: string;
+
+  @Column()
+  theme: string;
+
+  @Column()
+  date: Date;
+
+  @ManyToOne(() => Localisation, (localisation) => localisation.salles)
+  location: Localisation;
+
+  @ManyToOne(() => Salle, (salle) => salle.location)
+  salle: Salle;
+
+  @OneToMany(() => TableEvent, (table) => table.event)
+  tables: TableEvent[];
+
+  @OneToMany(() => Invite, (invite) => invite.event)
+  invites: Invite[];
 }

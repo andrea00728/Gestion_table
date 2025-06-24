@@ -1,6 +1,8 @@
-export class CreateEvenementDTO{
-    nom:string;
-    theme:string;
-    type:string;
-    date:string;
+export class CreateEventDto {
+  nom: string;
+  type: 'mariage' | 'reunion' | 'anniversaire' | 'engagement' | 'autre';
+  theme: string;
+  date: Date;
+  locationId: number;
+  salleId: number;
 }
