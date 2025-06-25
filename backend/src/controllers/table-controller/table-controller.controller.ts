@@ -16,7 +16,7 @@ export class TableController {
   constructor(private readonly tableService: TableService) {}
 
   //  Créer une table
-  @Post()
+  @Post('create')
   async createTable(@Body() dto: CreateTableDto): Promise<TableEvent> {
     return await this.tableService.createTable(dto);
   }

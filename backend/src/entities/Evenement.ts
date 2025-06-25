@@ -1,4 +1,3 @@
-// src/event/entities/event.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { Localisation } from './Location';
 import { Salle } from './salle';

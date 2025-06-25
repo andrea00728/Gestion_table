@@ -5,34 +5,50 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { User } from './entities/user.entity';
-import { Evenement } from './entities/Evenement';
+import { ProfileController } from './controllers/profile/profile.controller';
 import { TableModule } from './modules/table/table.module';
 import { InviteModule } from './modules/invite/invite.module';
 import { InvitationModule } from './modules/invitation/invitation.module';
-import { TableEvent } from './entities/Table';
+import { LocationModule } from './modules/localisation/localisation.module';
+import { Evenement } from './entities/Evenement';
+import { Localisation } from './entities/Location';
 import { Invitation } from './entities/Invitation';
 import { Invite } from './entities/Invite';
-import { LocationModule } from './modules/localisation/localisation.module';
-import { Localisation } from './entities/Location';
 import { Salle } from './entities/salle';
+import { TableEvent } from './entities/Table';
+import { EvenementModule } from './modules/evenement/evenement.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: ['.env'], // Spécifie le fichier .env (optionnel, par défaut .env)
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
-        entities: [User,Evenement,TableEvent,Invitation,Invite,Localisation,Salle],
-        synchronize: true, 
-      }),
+      useFactory: (configService: ConfigService) => {
+        const dbHost = configService.get<string>('DB_HOST');
+        const dbPort = configService.get<number>('DB_PORT');
+        const dbUsername = configService.get<string>('DB_USERNAME');
+        const dbPassword = configService.get<string>('DB_PASSWORD');
+        const dbDatabase = configService.get<string>('DB_DATABASE');
+
+        if (!dbHost || !dbPort || !dbUsername || !dbPassword || !dbDatabase) {
+          throw new Error('Les variables d\'environnement de la base de données sont manquantes');
+        }
+
+        return {
+          type: 'postgres',
+          host: dbHost,
+          port: dbPort,
+          username: dbUsername,
+          password: dbPassword,
+          database: dbDatabase,
+          entities: [User,Evenement,Localisation,Invitation,Invite,Salle,TableEvent],
+     
+          synchronize: true,
+        };
+      },
       inject: [ConfigService],
     }),
     AuthModule,
@@ -40,7 +56,9 @@ import { Salle } from './entities/salle';
     TableModule,
     InviteModule,
     InvitationModule,
+    EvenementModule,
     LocationModule
   ],
+  controllers: [ProfileController],
 })
 export class AppModule {}

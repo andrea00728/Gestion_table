@@ -23,7 +23,7 @@ export class GuestController {
   constructor(private readonly guestService: GuestService) {}
 
   //  Créer un invité manuellement
-  @Post()
+  @Post('/create')
   async create(@Body() dto: CreateInviteDto): Promise<Invite> {
     return await this.guestService.createGuest(dto);
   }

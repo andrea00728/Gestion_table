@@ -1,4 +1,3 @@
-// src/table/entities/table.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { Invite } from './Invite';
 import { Evenement } from './Evenement';

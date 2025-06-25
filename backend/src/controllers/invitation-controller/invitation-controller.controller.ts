@@ -7,10 +7,11 @@ import {
 } from '@nestjs/common';
 import { CreateInvitationDto } from 'src/dto/CreateInvitatioDto';
 import { Invitation } from 'src/entities/Invitation';
+import { InvitationService } from 'src/services/invitation-service/invitation-service.service';
 
 @Controller('invitations')
 export class InvitationController {
-  constructor(private readonly invitationService: InvitationController) {}
+  constructor(private readonly invitationService: InvitationService) {}
 
   //  Créer une invitation + envoi des mails
   @Post()

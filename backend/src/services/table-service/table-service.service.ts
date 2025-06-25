@@ -17,6 +17,9 @@ export class TableService {
   ) {}
 
   async createTable(dto: CreateTableDto): Promise<TableEvent> {
+    if(!dto||dto.numero===undefined || dto.capacite===undefined || !dto.eventId){
+      throw new BadRequestException("donnee de creation de table incomplets");
+    }
     const table = this.tableRepository.create({
       numero: dto.numero,
       capacite: dto.capacite,

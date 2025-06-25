@@ -10,7 +10,7 @@ import { TableService } from 'src/services/table-service/table-service.service';
     TypeOrmModule.forFeature([TableEvent, Invite])
   ],
   controllers: [TableController],
-  providers: [TableService],
+  providers: [TableService,],
   exports: [TableService], 
 })
 export class TableModule {}

@@ -6,12 +6,13 @@ import {  Localisation } from 'src/entities/Location';
 import { Salle } from 'src/entities/salle';
 import {  TableEvent } from 'src/entities/Table';
 import { EvenementService } from 'src/services/evenement/evenement.service';
+import { LocationService } from 'src/services/localisation-service/localisation-service.service';
 
 @Module({
     imports:[
         TypeOrmModule.forFeature([Evenement,Localisation,Salle,TableEvent])
     ],
     controllers:[EvenementController],
-    providers:[EvenementService],
+    providers:[EvenementService,LocationService],
 })
 export class EvenementModule {}
